@@ -1,0 +1,35 @@
+{
+  "name": "@victorzinho/brain-fartools",
+  "version": "0.0.1-alpha.1",
+  "repository": "git@github.com:victorzinho/brain-fartools",
+  "author": "Víctor González <victorzinho@gmail.com>",
+  "main": "src/main.js",
+  "dependencies": {
+    "@tonejs/midi": "^2.0.27",
+    "gh-pages": "^3.2.3",
+    "highcharts": "^9.1.2",
+    "summary": "^2.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.28.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.0",
+    "esm": "^3.2.25",
+    "html-webpack-plugin": "^5.3.1",
+    "mocha": "^9.0.0",
+    "nyc": "^15.1.0",
+    "pngjs": "^6.0.0",
+    "webpack": "^5.38.1",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "scripts": {
+    "test": "mocha --require esm",
+    "lint": "eslint src test",
+    "build": "webpack",
+    "serve": "webpack serve --open",
+    "deploy": "gh-pages -d dist"
+  }
+}
