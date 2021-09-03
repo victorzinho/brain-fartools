@@ -2,17 +2,12 @@ import Highcharts from 'highcharts';
 import HighchartsMore from 'highcharts/highcharts-more';
 import Histogram from 'highcharts/modules/histogram-bellcurve';
 import Summary from 'summary';
+import { MidiStats } from './midi_stats';
 
 Histogram(Highcharts);
 HighchartsMore(Highcharts);
 
 const files = [];
-let millisSeries = [];
-let velocitySeries = [];
-let histogramMillisDiff = [];
-let histogramMillisDiffNormalized = [];
-let histogramVelocityDiff = [];
-let histogramVelocityDiffNormalized = [];
 
 function getPedalRanges (midi) {
   const pedalRanges = [];
@@ -41,11 +36,6 @@ function adjustDurationsWithPedal (midi) {
         note.durationTicks = range[1] - note.ticks;
       }
     });
-}
-
-function toMillis (midi, note) {
-  const bpm = midi.header.tempos.length > 0 ? midi.header.tempos[0].bpm : 60;
-  return Math.round(60000 / (bpm * midi.header.ppq) * note.durationTicks);
 }
 
 function histogram (renderTo, data, title, xAxis) {
@@ -114,58 +104,28 @@ function boxplot (renderTo, series, title, yAxis) {
   });
 }
 
-export function analyze (midi, filename, aggregateData = true) {
+const stats = new MidiStats(true,
+  0, 400,
+  0, 1500,
+  [0.25, 0.33, 0.5, 1, 2, 3, 4, 6, 8, 12, 16]);
+
+export function analyze (midi, filename) {
   adjustDurationsWithPedal(midi);
 
-  if (!aggregateData) {
-    millisSeries = [];
-    histogramMillisDiff = [];
-    histogramMillisDiffNormalized = [];
-    velocitySeries = [];
-    histogramVelocityDiff = [];
-    histogramVelocityDiffNormalized = [];
-  }
-
-  const notes = midi.tracks.flatMap(track => track.notes);
-  const currentMillisSeries = [];
-  const currentVelocitySeries = [];
-  for (let i = 1; i < notes.length; i++) {
-    let minDiffMillis = 1e7;
-    const currentMillis = toMillis(midi, notes[i]);
-    const previousMillis = toMillis(midi, notes[i - 1]);
-    const currentVelocity = notes[i].velocity;
-    const previousVelocity = notes[i - 1].velocity;
-    const diffVelocity = previousVelocity - currentVelocity;
-
-    const durationRelations = [0.25, 0.33, 0.5, 1, 2, 3, 4, 6, 8, 12, 16];
-    for (const durationRelation of durationRelations) {
-      const diffMillis = previousMillis * durationRelation - currentMillis;
-      if (Math.abs(diffMillis) < Math.abs(minDiffMillis)) {
-        minDiffMillis = diffMillis;
-      }
-    }
-
-    // who doesn't love some magic numbers? :)
-    if (Math.abs(currentMillis) < 1500) {
-      currentMillisSeries.push(currentMillis);
-      histogramMillisDiff.push(minDiffMillis);
-      histogramMillisDiffNormalized.push(minDiffMillis / Math.max(currentMillis, previousMillis));
-    }
-
-    currentVelocitySeries.push(currentVelocity);
-    histogramVelocityDiff.push(diffVelocity);
-    histogramVelocityDiffNormalized.push(diffVelocity / Math.max(currentVelocity, previousVelocity));
-  }
-  millisSeries.push(currentMillisSeries);
-  velocitySeries.push(currentVelocitySeries);
+  stats.newMidi(midi);
   files.push(filename);
+  midi.tracks.flatMap(track => track.notes).forEach(stats.note.bind(stats));
 
-  boxplot('output_boxplot1', millisSeries, 'duration', 'ms');
-  histogram('output_histogram1', millisSeries.flat(), 'duration', 'ms');
-  histogram('output_histogram2', histogramMillisDiff, 'duration diff', 'ms');
-  histogram('output_histogram3', histogramMillisDiffNormalized, 'duration diff normalized', '%');
-  boxplot('output_boxplot2', velocitySeries, 'velocity', 'ms');
-  histogram('output_histogram4', velocitySeries.flat(), 'velocity', 'pepinaso [0-1]');
-  histogram('output_histogram5', histogramVelocityDiff, 'velocity diff', 'pepinaso [0-1]');
-  histogram('output_histogram6', histogramVelocityDiffNormalized, 'velocity diff normalized', '%');
+  boxplot('output_boxplot1', stats.getAttackValues(), 'attack diff', 'ms');
+  histogram('output_histogram1_1', stats.getAttackValues().flat(), 'attack diff', 'ms');
+  histogram('output_histogram1_2', stats.getAttackDelta().flat(), 'attack diff delta', 'ms]');
+  histogram('output_histogram1_3', stats.getAttackDeltaNormalized().flat(), 'attack diff delta normalized', '%');
+  boxplot('output_boxplot2', stats.getVelocityValues(), 'velocity', 'ms');
+  histogram('output_histogram2_1', stats.getVelocityValues().flat(), 'velocity', 'pepinaso [0-1]');
+  histogram('output_histogram2_2', stats.getVelocityDelta().flat(), 'velocity delta', 'pepinaso [0-1]');
+  histogram('output_histogram2_3', stats.getVelocityDeltaNormalized().flat(), 'velocity delta normalized', '%');
+  boxplot('output_boxplot3', stats.getDurationValues(), 'duration', 'ms');
+  histogram('output_histogram3_1', stats.getDurationValues().flat(), 'duration', 'ms');
+  histogram('output_histogram3_2', stats.getDurationDelta().flat(), 'duration delta', 'ms');
+  histogram('output_histogram3_3', stats.getDurationDeltaNormalized().flat(), 'duration delta normalized', '%');
 }
