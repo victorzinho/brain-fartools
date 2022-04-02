@@ -1,7 +1,8 @@
 import { digitizeLines } from './digitize';
 import { readMidi } from './midi_io';
-import { modify } from './randomize_midi';
+// import { modify } from './randomize_midi';
 import { analyze } from './midi_analysis';
+import { sectionA1FirstChord } from './midi_generate_random';
 
 const canvas = document.createElement('canvas');
 const context = canvas.getContext('2d');
@@ -13,6 +14,11 @@ document.getElementById('image').addEventListener('change', event => {
     reader.onload = () => readBytes(reader, files[0].name);
     reader.readAsArrayBuffer(files[0]);
   }
+});
+
+document.getElementById('download_random_midi').addEventListener('click', () => {
+  const midi = sectionA1FirstChord();
+  downloadBlob(midi.toArray(), 'section_a1_first_chord.mid', 'application/octet-stream');
 });
 
 function readBytes (fileReader, filename) {
