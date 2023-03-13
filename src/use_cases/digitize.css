@@ -1,0 +1,73 @@
+.digitizeContainer {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    padding: 3em 3em 0 3em;
+}
+
+.digitizeParamsContainer {
+    width: 90%;
+    display: flex;
+    flex-flow: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-left: 6em;
+}
+
+.digitizeParamsContainer > .sliderRangeContainer {
+    width: 45%;
+    min-width: 25em;
+    display: flex;
+    align-items: center;
+}
+
+.digitizeParamsContainer > .sliderRangeContainer > label {
+    width: 10em;
+    white-space: nowrap;
+}
+
+.digitizeCanvasContainer {
+    position: relative;
+    margin: 1em auto;
+    border: 1px solid gray;
+    width: 80%;
+    height: 40vh;
+}
+
+.digitizeCanvasLabel {
+    position: absolute;
+    top: -1em;
+    line-height: 2em;
+    left: 2em;
+    background: #ccdefa;
+    padding: 0 1em;
+}
+
+.digitizeOutputContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.digitizeMusicPieceContainer {
+    width: 50%;
+}
+
+.digitizeMusicPieceContainer textarea {
+    width: 100%;
+    padding: 1em 5em 1em 1em;
+}
+
+.digitizeFrequenciesContainer {
+    width: 33%;
+}
+
+.digitizeFrequenciesContainer textarea {
+    width: 15em;
+}
+
+.digitizeFrequenciesText {
+    text-align: center;
+    max-width: 20em;
+    font-weight: bold;
+}
+

@@ -1,35 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta charset="utf-8"/>
+<meta name="description" content="Victorzinho's music tools">
 <head>
-    <title>Testing some stuff</title>
-    <meta charset="utf-8"/>
+    <title>Brain fartools</title>
 </head>
 <style>
-    .histogram {
-        width: 24%;
-        display: inline-block;
+    body {
+        font-family: Gill Sans, sans-serif;
+        margin: 0;
+        background: black;
     }
 
-    .boxplot {
-        width: 24%;
-        display: inline-block;
+    #forkme {
+        position: fixed;
+        top: 5px;
+        right: 5px;
+        background: #6d6d6d;
+        color: #f0f0f0;
+        text-decoration: none;
+        text-align: center;
+        font-weight: bold;
+        padding: 16px;
+        font-size: 0.9em;
+        transition: 0.5s;
+        width: 230px;
+    }
+
+    #forkme:hover {
+        background: #e77e00;
+    }
+
+    @media screen and (min-width: 1280px) {
+        #forkme {
+            top: 50px;
+            right: -55px;
+            transform: rotate(45deg);
+        }
     }
 </style>
 <body>
-<input type="file" name="image" id="image" size="24"/>
-<img id="output_image" alt="" src="">
-<div id="output_freqs"></div>
-<div id="output_boxplot1" class="boxplot"></div>
-<div id="output_histogram1_1" class="histogram"></div>
-<div id="output_histogram1_2" class="histogram"></div>
-<div id="output_histogram1_3" class="histogram"></div>
-<div id="output_boxplot2" class="boxplot"></div>
-<div id="output_histogram2_1" class="histogram"></div>
-<div id="output_histogram2_2" class="histogram"></div>
-<div id="output_histogram2_3" class="histogram"></div>
-<div id="output_boxplot3" class="boxplot"></div>
-<div id="output_histogram3_1" class="histogram"></div>
-<div id="output_histogram3_2" class="histogram"></div>
-<div id="output_histogram3_3" class="histogram"></div>
+<a id="forkme" href="https://github.com/victorzinho/brain-fartools/issues" target="_blank">Bugs and suggestions</a>
 </body>
 </html>

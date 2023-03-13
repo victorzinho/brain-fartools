@@ -1,0 +1,45 @@
+.tabsContainer {
+    max-width: 80em;
+    margin: 5px auto;
+    display: flex;
+    flex-flow: column;
+    height: calc(100vh - 10px);
+}
+
+.tabsContents {
+    background: #ccdefa;
+    overflow-y: auto;
+}
+
+.tabsHeaderContainer {
+    display: flex;
+    flex-flow: row;
+}
+
+.tabsHeader {
+    position: relative;
+    border-width: 0 1px 1px 0;
+    border-color: gray;
+    border-style: solid;
+    line-height: 3em;
+    padding: 0 20px;
+    background: #eee;
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.tabsHeader.selected {
+    background: #ccdefa;
+    color: black;
+    border-color: #ccdefa;
+}
+
+.tabsHeader.selected:not(:first-of-type) {
+    border-width: 0 1px;
+    margin-left: -1px;
+}
+

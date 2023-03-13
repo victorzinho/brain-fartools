@@ -1,0 +1,22 @@
+.setTheoryContainer {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.pcSetCalculatorFrame, .jsConsoleFrame {
+    width: 90%;
+    max-width: 70em;
+}
+
+.pcSetCalculatorFrame {
+    height: 55vh;
+    max-height: 150em;
+}
+
+.jsConsoleFrame {
+    min-height: 8em;
+    margin-top: 1em;
+    height: 25vh;
+    background: #efefef;
+}
