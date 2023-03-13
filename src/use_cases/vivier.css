@@ -1,0 +1,105 @@
+.vivierContainer, #vivierColors {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.vivierContainer {
+    position: relative;
+    margin: 1em auto;
+    width: 75%;
+    border: 1px solid gray;
+}
+
+.vivierColorsLabel {
+    position: absolute;
+    top: -1em;
+    left: 2em;
+    padding: 0 1em;
+    line-height: 2em;
+    font-weight: bold;
+    background: #ccdefa;
+}
+
+.vivierColorsContainer {
+    width: 100%;
+    overflow-y: auto;
+    max-height: 30vh;
+}
+
+.vivierColorInputContainer:first-of-type {
+    margin-top: 2em;
+}
+
+.vivierColorInputContainer {
+    display: flex;
+    padding: 0.6em;
+    justify-content: center;
+    align-items: center;
+}
+
+.vivierColorInputContainer > .sliderRangeContainer {
+    width: 45%;
+    min-width: 20em;
+    display: flex;
+    align-items: center;
+    margin: 0 2em;
+}
+
+.shinyButton.vivierColorButton {
+    height: 2em;
+    width: 2em;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 2em;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.vivierMusicPieceContainer {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    margin-top: 1em;
+}
+
+.vivierMusicPieceContainer textarea {
+    width: 100%;
+    height: calc((100vh - 40em) * 0.8);
+    min-height: 10em;
+}
+
+input.invalidInput {
+    border-color: red;
+}
+
+.vivierParamsContainer input:focus {
+    outline: none;
+}
+
+.vivierInputContainer, .vivierOutputContainer, .vivierFrequenciesContainer {
+    width: 33%;
+}
+
+.vivierOutputContainer {
+    margin-left: 1em;
+}
+
+.vivierInputContainer > .musicPieceInputTextContainer,
+.vivierInputContainer > .musicPieceInputButtonContainer {
+    justify-content: right;
+}
+
+.vivierFrequenciesText {
+    text-align: center;
+    max-width: 20em;
+    font-weight: bold;
+}
+
+
+.vivierInputContainer .musicPieceInputMessages {
+    margin: 0.5em 2em 0 2em;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+}

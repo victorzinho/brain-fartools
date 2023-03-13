@@ -1,0 +1,43 @@
+#ballBounce, #timeSteps, #randomNotes, #setTheory, #midiAnalysis, #vivierColors, #digitizeLines {
+    margin: 1em auto;
+}
+
+.shinyButton {
+    width: 8em;
+    border-radius: 20px;
+    background: black;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.shinyButton.disabled {
+    background: gray;
+    cursor: not-allowed;
+}
+
+.swal2-popup {
+    width: unset !important;
+    max-width: 50%;
+}
+
+.swal2-html-container {
+    text-align: unset !important;
+}
+
+.swal2-icon {
+    width: 2em !important;
+    height: 2em !important;
+    margin: 1em auto !important;
+}
+
+.swal2-icon-content {
+    font-size: 1.75em !important;
+}
+
+.swal2-title {
+    padding: 0 !important;
+}

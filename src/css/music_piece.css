@@ -1,0 +1,64 @@
+.musicPieceInputTextContainer {
+    display: flex;
+    margin: 0 auto;
+    width: 100%;
+    justify-content: center;
+}
+
+.musicPieceInputVerbose:focus, .musicPieceInputArray:focus {
+    outline: none;
+}
+
+.musicPieceInputVerbose, .musicPieceInputArray {
+    line-height: 1.5em;
+    padding: 1em;
+    font-size: 0.9em;
+    font-family: Andale Mono, monospace;
+    background: none;
+    border-color: white;
+    border-width: 3px;
+    height: 30em;
+    resize: none;
+    white-space: nowrap;
+}
+
+.musicPieceInputVerbose {
+    margin: 0 10px 10px 0;
+    max-width: 45em;
+    width: 70%;
+}
+
+.musicPieceInputArray {
+    margin: 0 0 10px 0;
+    max-width: 20em;
+    width: 30%;
+}
+
+.musicPieceInputButtonContainer {
+    display: flex;
+    flex-flow: wrap;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.musicPieceInputPlayback, .musicPieceInputDownload {
+    margin: 0 10px;
+}
+
+.musicPieceInputMessages {
+    margin: 10px 0 0 0;
+    padding: 10px;
+    height: 1.5em;
+    vertical-align: center;
+}
+
+.errorBorder {
+    border: 2px solid #d55e5e;
+    border-radius: 5px;
+}
+
+.midiTempoSlider {
+    width: 20em !important;
+    margin: 2.5em 0 1em 0;
+}

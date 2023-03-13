@@ -2,7 +2,7 @@ import assert from 'assert';
 import fs from 'fs';
 import { describe, it } from 'mocha';
 import { PNG } from 'pngjs';
-import { digitizeLines } from '../src/digitize';
+import { digitizeLines } from '../src/use_cases/digitize';
 
 const RESOURCES_LINE = 'test/resources/line_lowres.png';
 

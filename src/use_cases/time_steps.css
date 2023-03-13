@@ -1,0 +1,47 @@
+.timeStepsContainer {
+    padding: 2em 2em 0 2em;
+}
+
+.timeStepsParamsContainer {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    margin-bottom: 2em;
+}
+
+.timeStepsParamsRow {
+    width: calc(100% - 5em);
+    display: flex;
+    flex-flow: wrap;
+    align-items: center;
+    justify-content: center;
+    padding-left: 5em;
+}
+
+.timeStepsParamsRow > .sliderRangeContainer {
+    width: 45%;
+    min-width: 25em;
+    display: flex;
+    align-items: center;
+    margin: 0.8em;
+}
+
+.timeStepsParamsRow > .sliderRangeContainer > label {
+    width: 10em;
+    white-space: nowrap;
+}
+
+.timeStepsCanvasContainer {
+    height: 5em;
+    width: 80%;
+    max-width: 60em;
+}
+
+.timeStepsCanvasContainer > div {
+    height: 100%;
+}
+
+.timeStepsContainer textarea {
+    height: calc((100vh - 40em) * 0.8);
+    min-height: 10em;
+}

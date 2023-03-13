@@ -1,0 +1,23 @@
+.midiAnalysisBoxplot, .midiAnalysisHistogram {
+    width: 48%;
+    display: inline-block;
+    margin: 2px;
+    min-width: 25em;
+}
+
+.midiAnalysisFileInput {
+    width: 45%;
+    margin-bottom: 1em;
+}
+
+.midiAnalysisContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.midiAnalysisContainer > .shinyButton {
+    height: 1.2em;
+    line-height: 1.2em;
+    margin-bottom: 1em;
+}

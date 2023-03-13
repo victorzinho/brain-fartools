@@ -1,0 +1,33 @@
+.randomParamsContainer {
+    padding: 2em;
+}
+
+.randomParamsRow {
+    width: 100%;
+    display: flex;
+    flex-flow: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.randomMusicPieceContainer textarea {
+    height: calc((100vh - 35em) * 0.8);
+    min-height: 10em;
+}
+
+.randomParamsRow > .sliderRangeContainer {
+    width: 45%;
+    min-width: 25em;
+    display: flex;
+    align-items: center;
+    margin: 0.8em;
+}
+
+.randomParamsRow > .sliderRangeContainer > label {
+    width: 10em;
+    white-space: nowrap;
+}
+
+.randomAgainButton.shinyButton {
+    margin: 0 auto;
+}

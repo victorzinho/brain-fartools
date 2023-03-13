@@ -1,0 +1,35 @@
+.ballBounceContainer {
+    display: flex;
+    flex-flow: column;
+    margin-bottom: 1em;
+}
+
+.ballBounceCanvas {
+    display: flex;
+    justify-content: center;
+    padding: 1em;
+    height: 30em;
+    max-height: 40vh;
+    min-height: 15em !important;
+}
+
+.ballBounceCanvas > div {
+    width: 80%;
+    border: 1px solid gray;
+}
+
+.ballBounceInputs {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+}
+
+.ballBounceRho {
+    width: 15em !important;
+    margin: 2em 0 1em 0;
+}
+
+.ballBounceTime {
+    width: 25em !important;
+    margin: 2em 0 1em 0;
+}

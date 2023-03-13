@@ -1,0 +1,72 @@
+.sliderSingleContainer {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.sliderSingleContainer > label {
+    margin: 10px;
+}
+
+.sliderRangeContainer {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.sliderRangeContainer > label,
+.inputTextContainer > label {
+    margin: 10px;
+}
+
+.sliderRangeContainer > .sliderRange {
+    width: 100%;
+}
+
+.inputTextContainer {
+    margin: 10px;
+}
+
+.inputTextContainer > input {
+    height: 2em;
+}
+
+.popup-question-mark {
+    font-weight: 900;
+    font-size: 1.5em;
+    font-family: fangsong;
+    border: 3px solid #e77e00;
+    border-radius: 50%;
+    height: 1em;
+    position: absolute;
+    width: 1em;
+    text-align: center;
+    align-items: center;
+    line-height: 1em;
+    margin: 0 15px;
+    cursor: pointer;
+    z-index: 9999;
+}
+
+.sliderRangeContainer label {
+    white-space: nowrap;
+}
+.sliderRangeContainer div.noUi-handle {
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    top: -6px;
+    outline: 0;
+    border: 1px solid #ebedf3;
+    box-shadow: 0 3px 6px -3px rgba(0, 0, 0, .7);
+}
+
+.sliderRangeContainer div.noUi-handle::before, .sliderRangeContainer div.noUi-handle::after {
+    content: unset;
+}
+
+.sliderRangeContainer div.noUi-target.noUi-horizontal {
+    height: 15px;
+}
+
+.sliderRangeContainer div.noUi-connect {
+    background: #e77e00;
+}
