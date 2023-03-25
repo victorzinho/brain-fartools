@@ -15,8 +15,8 @@
 
     #forkme {
         position: fixed;
-        top: 5px;
-        right: 5px;
+        top: 50px;
+        right: -55px;
         background: #6d6d6d;
         color: #f0f0f0;
         text-decoration: none;
@@ -26,18 +26,12 @@
         font-size: 0.9em;
         transition: 0.5s;
         width: 230px;
+        z-index: 9999;
+        transform: rotate(45deg);
     }
 
     #forkme:hover {
         background: #e77e00;
-    }
-
-    @media screen and (min-width: 1280px) {
-        #forkme {
-            top: 50px;
-            right: -55px;
-            transform: rotate(45deg);
-        }
     }
 </style>
 <body>

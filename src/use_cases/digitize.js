@@ -81,10 +81,15 @@ class LineCanvas {
 
     window.addEventListener('resize', e => this.resize(e));
     parent.withEventListener('mousemove', e => this.draw(e));
-    window.addEventListener('mouseup', () => {
-      this.reset();
-      this.listeners.forEach(l => l());
-    });
+    parent.withEventListener('touchmove', e => this.draw(e));
+    window.addEventListener('mouseup', e => this.endEvent(e));
+    window.addEventListener('touchend', e => this.endEvent(e));
+  }
+
+  endEvent (event) {
+    // event.preventDefault();
+    this.reset();
+    this.listeners.forEach(l => l());
   }
 
   onFinishLine (listener) {
@@ -102,13 +107,16 @@ class LineCanvas {
 
   setPosition (e) {
     const rect = this.canvas.domElement.getBoundingClientRect();
-    this.position.x = e.clientX - rect.left - window.scrollX;
-    this.position.y = e.clientY - rect.top - window.scrollY;
+    this.position.x = (e.clientX || e.targetTouches[0].clientX) - rect.left - window.scrollX;
+    this.position.y = (e.clientY || e.targetTouches[0].clientY) - rect.top - window.scrollY;
   }
 
   draw (e) {
-    // mouse left button must be pressed
-    if (e.buttons !== 1) return;
+    if (e.touches) {
+      e.preventDefault();
+    } else if (e.buttons !== 1) {
+      return;
+    }
 
     if (!this.canvas.domElement.width || !this.canvas.domElement.height) this.resize();
     this.context.beginPath();
@@ -117,14 +125,12 @@ class LineCanvas {
     this.context.strokeStyle = '#F00';
 
     if (this.position.x && this.position.y) {
-      // first point
-      this.context.moveTo(this.position.x, this.position.y); // from
+      this.context.moveTo(this.position.x, this.position.y);
       this.setPosition(e);
-      this.context.lineTo(this.position.x, this.position.y); // to
+      this.context.lineTo(this.position.x, this.position.y);
       this.context.stroke(); // draw it!
     } else {
       this.context.clearRect(0, 0, this.canvas.domElement.width, this.canvas.domElement.height);
-      // this.context.moveTo(this.position.x, this.position.y);
       this.setPosition(e);
     }
   }

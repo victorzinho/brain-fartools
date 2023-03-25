@@ -32,6 +32,7 @@
     margin: 0 0 10px 0;
     max-width: 20em;
     width: 30%;
+    min-width: 13em;
 }
 
 .musicPieceInputButtonContainer {
@@ -60,5 +61,6 @@
 
 .midiTempoSlider {
     width: 20em !important;
+    max-width: 95% !important;
     margin: 2.5em 0 1em 0;
 }

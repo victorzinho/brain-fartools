@@ -1,6 +1,6 @@
 import UI from './UI';
 import Swal from 'sweetalert2';
-import Tabs from './Tabs';
+import Menu from './Menu';
 
 import BallBounce from './use_cases/ball_bounce';
 import RandomNotes from './use_cases/random';
@@ -13,7 +13,7 @@ import ExternalLinks from './use_cases/external_links';
 
 import './css/main.css';
 
-const tabs = new Tabs(document.body);
+const tabs = new Menu(document.body);
 
 function addTab (title, id, useCase) {
   const tab = tabs.add(title).withAttribute('id', id);
