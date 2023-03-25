@@ -20,7 +20,7 @@
 
 .timeStepsParamsRow > .sliderRangeContainer {
     width: 45%;
-    min-width: 25em;
+    min-width: 16em;
     display: flex;
     align-items: center;
     margin: 0.8em;

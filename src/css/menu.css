@@ -1,0 +1,80 @@
+.menuToggle {
+    font-size: 1.5em;
+}
+
+.menuContainer {
+    position: absolute;
+    transition: all 0.2s ease-in-out;
+    overflow: hidden;
+    background: #fafafa;
+    border: solid 1px #cacaca;
+    width: 20em;
+    cursor: pointer;
+    z-index: 9999;
+}
+
+.menuContainer.closed {
+    width: 4em;
+}
+
+.menuToggle {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 1.25rem;
+}
+
+.menuToggle span {
+    transition: all 0.2s ease-in-out;
+    color: #e77e00;
+}
+
+.closed .menuToggle span {
+    color: black;
+}
+
+.menuItems {
+    transition: all 0.2s ease-in-out;
+    font-weight: bold;
+}
+
+.menuItem a {
+    margin-left: 1em;
+    text-decoration: none;
+    color: black;
+    transition: all 0.2s ease-in-out;
+    white-space: nowrap;
+}
+
+.menuItem {
+    font-size: 1em;
+    transition: all 0.2s ease-in-out;
+    padding: 1em 0.4em;
+    border-top: solid 1px #cacaca;
+    list-style-type: none;
+}
+
+.menuItem:hover {
+    background: #e77e00;
+}
+
+.menuItem:hover a {
+    color: white;
+}
+
+.menuContainer.closed .menuItems {
+    height: 0;
+}
+
+.menuRootContainer {
+    max-width: 80em;
+    margin: 5px auto;
+    display: flex;
+    flex-flow: column;
+    height: calc(100vh - 10px);
+}
+
+.menuContents {
+    margin-top: 4.1em;
+    background: #ccdefa;
+    overflow-y: auto;
+}

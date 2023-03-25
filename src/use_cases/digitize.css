@@ -16,9 +16,10 @@
 
 .digitizeParamsContainer > .sliderRangeContainer {
     width: 45%;
-    min-width: 25em;
+    min-width: 18em;
     display: flex;
     align-items: center;
+    margin: 0.8em 0;
 }
 
 .digitizeParamsContainer > .sliderRangeContainer > label {
@@ -30,7 +31,7 @@
     position: relative;
     margin: 1em auto;
     border: 1px solid gray;
-    width: 80%;
+    width: calc(90% - 7em);
     height: 40vh;
 }
 
@@ -49,20 +50,20 @@
 }
 
 .digitizeMusicPieceContainer {
-    width: 50%;
+    width: calc(45% - 3em);
 }
 
 .digitizeMusicPieceContainer textarea {
     width: 100%;
-    padding: 1em 5em 1em 1em;
 }
 
 .digitizeFrequenciesContainer {
-    width: 33%;
+    width: calc(45% - 3em);
 }
 
 .digitizeFrequenciesContainer textarea {
-    width: 15em;
+    width: 80%;
+    margin-left: 5px;
 }
 
 .digitizeFrequenciesText {

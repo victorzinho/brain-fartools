@@ -23,8 +23,10 @@ const INFO = {
  */
 function create (parent) {
   const container = UI.Div(parent).withClassName('setTheoryContainer');
-  UI.Frame(container, 'https://www.mta.ca/pc-set/calculator/pc_calculate.html').withClassName('pcSetCalculatorFrame');
-  UI.Frame(container, 'https://jsconsole.com/').withClassName('jsConsoleFrame');
+  const pcSetCalculatorContainer = UI.Div(container).withClassName('pcSetCalculatorContainer');
+  UI.Frame(pcSetCalculatorContainer, 'https://www.mta.ca/pc-set/calculator/pc_calculate.html').withClassName('pcSetCalculatorFrame');
+  const consoleContainer = UI.Div(container).withClassName('consoleContainer');
+  UI.Frame(consoleContainer, 'https://jsconsole.com/').withClassName('jsConsoleFrame');
 }
 
 export default { create, INFO };
