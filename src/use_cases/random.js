@@ -41,7 +41,7 @@ function updateMusicPiece (musicPiece, minPitch, maxPitch, numNotes, durationLam
 function create (parent) {
   const randomParamsContainer = UI.Div(parent).withClassName('randomParamsContainer');
   const row1 = UI.Div(randomParamsContainer).withClassName('randomParamsRow');
-  const pitchRangeInput = UI.Slider(row1, 'Pitch range', 0, 127, [30, 60], 1);
+  const pitchRangeInput = UI.Slider(row1, 'Pitch (midi)', 0, 127, [30, 60], 1);
   const numNotesInput = UI.Slider(row1, 'Num. notes', 10, 500, [100], 1);
   const row2 = UI.Div(randomParamsContainer).withClassName('randomParamsRow');
   const durationLambdaInput = UI.Slider(row2, 'Time λ', 0.1, 10, [4], 0.1);

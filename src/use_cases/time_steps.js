@@ -67,8 +67,8 @@ function create (parent) {
   const numStepsInput = UI.Slider(row1, 'Num. steps', 1, 50, [10], 1);
   const factorInput = UI.Slider(row1, 'Factor', 0.01, 2.0, [0.5], 0.01);
   const row2 = UI.Div(timeStepsParamsContainer).withClassName('timeStepsParamsRow');
-  const initialStepInput = UI.Slider(row2, 'Initial step', 0.1, 30.0, [4], 0.1);
-  const totalTimeInput = UI.Slider(row2, 'Total time', 1, 300.0, [20.0], 0.1);
+  const initialStepInput = UI.Slider(row2, 'Initial step (s)', 0.1, 30.0, [4], 0.1);
+  const totalTimeInput = UI.Slider(row2, 'Total time (s)', 1, 300.0, [20.0], 0.1);
   const chart = createChart(timeStepsParamsContainer);
 
   const musicPieceContainer = UI.Div(container).withClassName('timeStepsMusicPieceContainer');

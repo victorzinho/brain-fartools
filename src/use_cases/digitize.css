@@ -49,18 +49,6 @@
     justify-content: center;
 }
 
-.digitizeMusicPieceContainer {
-    width: calc(45% - 3em);
-}
-
-.digitizeMusicPieceContainer textarea {
-    width: 100%;
-}
-
-.digitizeFrequenciesContainer {
-    width: calc(45% - 3em);
-}
-
 .digitizeFrequenciesContainer textarea {
     width: 80%;
     margin-left: 5px;
@@ -71,4 +59,3 @@
     max-width: 20em;
     font-weight: bold;
 }
-

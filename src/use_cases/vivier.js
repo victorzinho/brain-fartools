@@ -119,9 +119,9 @@ class VivierColor {
     const onChange = () => this.changeListeners.forEach(l => l(this.part1Slider.value, this.part2Slider.value));
 
     this.container = UI.Div(parent).withClassName('vivierColorInputContainer');
-    this.part1Slider = UI.Slider(this.container, 'Line 1', 0.01, 4.0, [initialPart1Factor], 0.01)
+    this.part1Slider = UI.Slider(this.container, 'Factor 1', 0.01, 4.0, [initialPart1Factor], 0.01)
       .withEventListener('update', onChange);
-    this.part2Slider = UI.Slider(this.container, 'Line 2', 0.01, 4.0, [initialPart2Factor], 0.01)
+    this.part2Slider = UI.Slider(this.container, 'Factor 2', 0.01, 4.0, [initialPart2Factor], 0.01)
       .withEventListener('update', onChange);
     // delete me
     UI.Div(this.container).withClassName('shinyButton vivierColorButton').withText('-').withEventListener('click', () => {

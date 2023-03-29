@@ -2,16 +2,10 @@ import UI from '../UI';
 import MidiIO from '../MidiIO';
 
 import { Highcharts } from '../charts';
-// import Highcharts from 'highcharts';
-// import HighchartsMore from 'highcharts/highcharts-more';
-// import Histogram from 'highcharts/modules/histogram-bellcurve';
 import Summary from 'summary';
 import { MidiStats } from './MidiStats';
 
 import './midi_analysis.css';
-
-// Histogram(Highcharts);
-// HighchartsMore(Highcharts);
 
 const INFO = {
   title: 'Are we really human?',

@@ -14,13 +14,15 @@
 }
 
 .menuContainer.closed {
-    width: 4em;
+    width: 3em;
 }
 
 .menuToggle {
     display: flex;
-    justify-content: space-between;
-    padding: 1rem 1.25rem;
+    width: 2em;
+    height: 2em;
+    justify-content: center;
+    align-items: center;
 }
 
 .menuToggle span {
@@ -74,7 +76,7 @@
 }
 
 .menuContents {
-    margin-top: 4.1em;
+    margin-top: calc(3em + 2px);
     background: #ccdefa;
     overflow-y: auto;
 }

@@ -38,7 +38,7 @@
 .musicPieceInputButtonContainer {
     display: flex;
     flex-flow: wrap;
-    margin: 0 auto;
+    margin: 0 auto 1em auto;
     align-items: center;
     justify-content: center;
 }

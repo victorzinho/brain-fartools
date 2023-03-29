@@ -44,8 +44,8 @@ function prettyPrintVerbose (musicPiece) {
 }
 
 export default function (parent, arrayOnly = false) {
-  const textContainer = UI.Div(parent).withClassName('musicPieceInputTextContainer');
   const buttonContainer = UI.Div(parent).withClassName('musicPieceInputButtonContainer');
+  const textContainer = UI.Div(parent).withClassName('musicPieceInputTextContainer');
   const listeners = [];
 
   let verboseText;

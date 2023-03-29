@@ -87,6 +87,11 @@ input.invalidInput {
     margin-left: 1em;
 }
 
+.vivierFrequenciesContainer textarea {
+    height: calc((100vh - 27.5em) * 0.8);
+    min-height: 22.5em;
+}
+
 .vivierFrequenciesText {
     text-align: center;
     max-width: 20em;

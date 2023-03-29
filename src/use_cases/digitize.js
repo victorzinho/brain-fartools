@@ -168,7 +168,7 @@ function create (parent) {
   const container = UI.Div(parent).withClassName('digitizeContainer');
 
   const paramsContainer = UI.Div(container).withClassName('digitizeParamsContainer');
-  const pitchRangeInput = UI.Slider(paramsContainer, 'Pitch range', 30, 4500, [100, 1000], 1);
+  const pitchRangeInput = UI.Slider(paramsContainer, 'Pitch range (hz)', 30, 4500, [100, 2000], 1);
   const timeInput = UI.Slider(paramsContainer, 'Time (s)', 1, 60, [11], 1);
 
   const canvasContainer = UI.Div(container).withClassName('digitizeCanvasContainer');
@@ -179,7 +179,8 @@ function create (parent) {
   const musicPieceContainer = UI.Div(outputContainer).withClassName('digitizeMusicPieceContainer');
   const musicPiece = MusicPiece(musicPieceContainer, true);
 
-  const frequenciesContainer = UI.Div(outputContainer).withClassName('digitizeFrequenciesContainer');
+  const frequenciesContainer = UI.Div(musicPieceContainer.domElement.querySelector('.musicPieceInputTextContainer'))
+    .withClassName('digitizeFrequenciesContainer');
   const frequenciesArea = UI.TextArea(frequenciesContainer).withClassName('musicPieceInputArray');
   UI.Div(frequenciesContainer).withText('Shiny hertz!').withClassName('digitizeFrequenciesText');
 

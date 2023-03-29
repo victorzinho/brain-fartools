@@ -15,7 +15,7 @@
 
 .sliderRangeContainer > label,
 .inputTextContainer > label {
-    margin: 10px;
+    margin: 10px 20px;
 }
 
 .sliderRangeContainer > .sliderRange {
