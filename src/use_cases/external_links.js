@@ -14,6 +14,10 @@ endless. So are the failures. (TBD, need to push the code somewhere yet)</li>
 <li><a href="https://louisbigo.com/hexachord" target="_blank">HexaChord</a>. According to the creator Louis Bigo: 
 "<i>HexaChord is a computer-aided music analysis/composition software based on spatial representations of musical pitches generalizing the Tonnetz.</i>
 Highly related to my sailboat hex-grid-over-the-north-sea adventure.</li>
+<li>Bernat Cucarella Sifre's <a href="https://bernatcs.gumroad.com/l/hnsvl" target="_blank">SecToBPM</a>. A small tool to 
+get the bpm for a given amount of bars and seconds.</li>
+<li>Bernat Cucarella Sifre's <a href="https://bernatcs.gumroad.com/l/gzNcA" target="_blank">CurveData</a>. A tool to get
+ a series of numbers from a highly customizable graph curve.</li>
 </ul>`);
 }
 
