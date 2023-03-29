@@ -39,9 +39,11 @@
     position: absolute;
     top: -1em;
     line-height: 2em;
-    left: 2em;
+    left: 1em;
     background: #ccdefa;
-    padding: 0 1em;
+    padding: 0 0.5em;
+    font-weight: bold;
+    white-space: nowrap;
 }
 
 .digitizeOutputContainer {

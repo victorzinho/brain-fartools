@@ -19,6 +19,10 @@
     cursor: not-allowed;
 }
 
+.swal2-container {
+    z-index: 9999;
+}
+
 .swal2-popup {
     width: 90% !important;
     max-width: 70em;
@@ -39,5 +43,5 @@
 }
 
 .swal2-title {
-    padding: 0 !important;
+    padding: 0 2em !important;
 }
