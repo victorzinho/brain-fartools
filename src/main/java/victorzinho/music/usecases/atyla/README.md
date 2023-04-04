@@ -7,14 +7,14 @@ The idea behind this is to place a hexagonal grid over some part of the world (f
 in UTM so if "some part of the world" is big you have to switch between CRSs, overlapping hexagons, etc.
 A fun problem to solve). Then define notes for all cells in the grid ([Tonnetz](https://en.wikipedia.org/wiki/Tonnetz)-like)
 and take some points that represent a trajectory over that grid to generate your harmony.
-Rules for the generated harmony are available in the [javadoc](MusicHarmonyGenerator.java#47).
+Rules for the generated harmony are available in the [javadoc](MusicHarmonyGenerator.java#L47).
 
 Reusability for this one is complex since the data might come in different shapes and sizes (I aggregated the ship's
 position from [MarineTraffic](https://www.marinetraffic.com/) and YellowBrick, in different json formats for example).
 Plus files can be big and the browser didn't seem the best option at the time I wrote it.
 
 To reuse:
-- Define your [grid](Main.java#16).
+- Define your [grid](Main.java#L16).
 - Define your point data ([extending PointData](input/VesselData.java)) with the extra values you might want to use.
   It needs to have at least lon/lat positions and timestamps. If that's the only relevant data you don't need to extend
   anything. 
