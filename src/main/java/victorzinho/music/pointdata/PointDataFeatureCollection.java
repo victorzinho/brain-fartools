@@ -12,6 +12,7 @@ import org.opengis.feature.simple.SimpleFeature;
 import org.opengis.feature.simple.SimpleFeatureType;
 
 import java.time.Duration;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -45,7 +46,7 @@ public class PointDataFeatureCollection<TPointData extends PointData> extends Ba
     ) {
         super(buildSchema((List) attributeDescriptors));
         this.pointDataSupplier = pointDataSupplier;
-        this.attributeDescriptors = attributeDescriptors;
+        this.attributeDescriptors = attributeDescriptors != null ? attributeDescriptors : Collections.emptyList();
         this.builder = new SimpleFeatureBuilder(getSchema());
     }
 
@@ -55,8 +56,10 @@ public class PointDataFeatureCollection<TPointData extends PointData> extends Ba
         builder.add(ATTR_GEOM, Point.class);
         builder.add(ATTR_COURSE, Double.class); // radians
         builder.add(ATTR_SPEED, Double.class); // m/s
-        for (AttributeDescriptor<?, ?> descriptor : attributeDescriptors) {
-            builder.add(descriptor.attribute, descriptor.getBinding());
+        if (attributeDescriptors != null) {
+            for (AttributeDescriptor<?, ?> descriptor : attributeDescriptors) {
+                builder.add(descriptor.attribute, descriptor.getBinding());
+            }
         }
         builder.setCRS(WGS84);
 

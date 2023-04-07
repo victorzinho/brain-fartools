@@ -12,6 +12,7 @@ import victorzinho.music.score.MusicScore;
 import victorzinho.music.score.NoteValue;
 import victorzinho.music.usecases.atyla.MusicHarmonyGenerator.AttributeDescriptor;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,6 +32,8 @@ public class ClassifierPartGenerator extends AbstractNamedMusicPart implements M
             List<AttributeDescriptor<TPointData, ?>> descriptors,
             ClassificationMethod method
     ) {
+        if (descriptors == null) return Collections.emptyList();
+
         return descriptors.stream()
                 .map(descriptor -> new ClassifierPartGenerator(
                         descriptor.getAttribute(),

@@ -12,8 +12,13 @@ import java.util.Map;
 
 public class ShpIO {
     public static SimpleFeatureCollection read(String path) {
+        return read(new File(path));
+
+    }
+
+    public static SimpleFeatureCollection read(File file) {
         try {
-            URL url = new File(path).toURI().toURL();
+            URL url = file.toURI().toURL();
             DataStore dataStore = DataStoreFinder.getDataStore(Map.of("url", url));
             return dataStore.getFeatureSource(dataStore.getTypeNames()[0]).getFeatures(Filter.INCLUDE);
         } catch (IOException e) {

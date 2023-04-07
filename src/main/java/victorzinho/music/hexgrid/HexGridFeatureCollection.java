@@ -39,7 +39,7 @@ public class HexGridFeatureCollection<T> extends AbstractFeatureCollection imple
      * Creates a new feature collection representing a hexagonal grid. The collection is in WGS84 but the hexagons
      * are calculated in meters using UTM for each cell (possibly switching between different CRS and having some overlaps).
      *
-     * @param outerCircleCellSize     The size of each cell, defined as the distance to the center to the outer
+     * @param outerCircleCellSize     The size of each cell, defined as the distance from the center to the outer
      *                                circle containing the whole cell (in meters).
      * @param regionOfInterestInWgs84 The region of interest, in WGS84.
      * @param hexGridValueProvider    The provider of values for the hex grid.
@@ -181,25 +181,40 @@ public class HexGridFeatureCollection<T> extends AbstractFeatureCollection imple
             coordinate = new Coordinate(westernPositionInRow.x, westernPositionInRow.y + 0.75 * height);
             coordinate.x += (lastRowIndented ? -width / 2 : width / 2);
 
-            if (updatePosition(coordinate)) {
+            if (!bounds.contains(toWgs84(coordinate))) {
+                // depending on the inclination of the wgs84 envelope in regard to the utm crs, the western
+                // hexagon might fall outside of bounds for the next row; if that's the case, try again with
+                // the next one
+                coordinate.x += width;
+                if (updatePosition(coordinate)) {
+                    this.previousValueSouthWest = this.lastRowIndented
+                            ? this.westernValueInRow
+                            : hexGridValueProvider.getValueFromWest(this.westernValueInRow);
+                    resetRow();
+                    return;
+                }
+            } else if (updatePosition(coordinate)) {
                 if (this.lastRowIndented) {
                     this.previousValueSouthEast = this.westernValueInRow;
                 } else {
                     this.previousValueSouthWest = this.westernValueInRow;
                 }
-
-                this.westernPositionInRow = this.nextPositionUtm;
-                this.westernCrsInRow = this.currentCrs;
-                this.westernValueInRow = null;
-                this.lastRowIndented = !this.lastRowIndented;
+                resetRow();
                 return;
             }
 
             this.nextPositionUtm = null;
         }
 
+        private void resetRow() {
+            this.westernPositionInRow = this.nextPositionUtm;
+            this.westernCrsInRow = this.currentCrs;
+            this.westernValueInRow = null;
+            this.lastRowIndented = !this.lastRowIndented;
+        }
+
         private boolean updatePosition(Coordinate positionUtm) {
-            Coordinate positionWgs84 = toWgs84(GEOMETRY_FACTORY.createPoint(positionUtm)).getCoordinate();
+            Coordinate positionWgs84 = toWgs84(positionUtm);
             if (!bounds.contains(positionWgs84)) {
                 return false;
             }
@@ -263,6 +278,10 @@ public class HexGridFeatureCollection<T> extends AbstractFeatureCollection imple
             }
 
             this.crsToFirstCoordinateInRow.put(crsName, this.nextPositionUtm);
+        }
+
+        private Coordinate toWgs84(Coordinate coordinate) {
+            return rethrow().get(() -> JTS.transform(coordinate, null, CRS.findMathTransform(currentCrs, WGS84, true)));
         }
 
         private Geometry toWgs84(Geometry g) {

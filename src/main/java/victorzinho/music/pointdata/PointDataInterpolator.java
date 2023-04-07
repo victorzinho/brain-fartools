@@ -2,9 +2,12 @@ package victorzinho.music.pointdata;
 
 import org.apache.commons.math3.analysis.interpolation.LinearInterpolator;
 import org.apache.commons.math3.analysis.polynomials.PolynomialSplineFunction;
+import org.locationtech.jts.geom.Coordinate;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.function.Function;
 
@@ -116,5 +119,26 @@ public class PointDataInterpolator<TPointData extends PointData> {
          * @return The interpolated point data.
          */
         TPointData build(List<Double> interpolatedData);
+    }
+
+    public static abstract class DefaultAdapter implements PointDataInterpolator.Adapter<PointData> {
+        @Override
+        public List<Function<PointData, ? extends Number>> getYFunctions() {
+            return List.of(
+                    pointData -> pointData.getPosition().x,
+                    pointData -> pointData.getPosition().y,
+                    PointData::getSpeed,
+                    PointData::getCourse
+            );
+        }
+
+        @Override
+        public PointData build(List<Double> values) {
+            Coordinate position = new Coordinate(values.get(1), values.get(2));
+            Instant instant = new Date(values.get(0).longValue() * 1000).toInstant();
+            return new PointData(position, instant)
+                    .setSpeed(values.get(3).floatValue())
+                    .setCourse(values.get(4).floatValue());
+        }
     }
 }
