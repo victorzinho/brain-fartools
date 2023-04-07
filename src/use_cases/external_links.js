@@ -9,7 +9,8 @@ function create (parent) {
 <li><a href="https://github.com/victorzinho/brain-fartools/tree/master/src/main/java/victorzinho/music/usecases/atyla"
  target="_blank">Some code</a> to produce music from a bunch of sailboat lat/lon coordinates and a hexagonal grid with notes placed over 
 some part of the world. Yup, I've done that, don't ask me why.</li>
-<li>Some code to produce music from a shapefile coming from agriculture machinery, mapping values such as 
+<li><a href="https://github.com/victorzinho/brain-fartools/tree/master/src/main/java/victorzinho/music/usecases/raster"
+ target="_blank">Some code</a> to produce music from a shapefile coming from agriculture machinery, mapping values such as 
 yield or speed to music parameters. And yes, I've done that too. My attempts to have code writing music for me are
 endless. So are the failures. (TBD, need to push the code somewhere yet)</li>
 <li><a href="https://louisbigo.com/hexachord" target="_blank">HexaChord</a>. According to the creator Louis Bigo: 

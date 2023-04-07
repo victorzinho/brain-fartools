@@ -22,7 +22,13 @@ import static org.geotools.referencing.crs.DefaultGeographicCRS.WGS84;
 
 public class PointDataFeatureCollection<TPointData extends PointData> extends BaseSimpleFeatureCollection {
     public static final String ATTR_GEOM = "geom";
+    /**
+     * In SI units (radians).
+     */
     public static final String ATTR_COURSE = "course";
+    /**
+     * In SI units (m/s).
+     */
     public static final String ATTR_SPEED = "speed";
 
     private static final GeodeticCalculator GEODETIC_CALCULATOR = new GeodeticCalculator();
@@ -47,7 +53,7 @@ public class PointDataFeatureCollection<TPointData extends PointData> extends Ba
         SimpleFeatureTypeBuilder builder = new SimpleFeatureTypeBuilder();
         builder.setName("instant_data");
         builder.add(ATTR_GEOM, Point.class);
-        builder.add(ATTR_COURSE, Integer.class); // radians
+        builder.add(ATTR_COURSE, Double.class); // radians
         builder.add(ATTR_SPEED, Double.class); // m/s
         for (AttributeDescriptor<?, ?> descriptor : attributeDescriptors) {
             builder.add(descriptor.attribute, descriptor.getBinding());

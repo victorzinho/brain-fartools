@@ -28,26 +28,26 @@ public class AudiverisMusicFactory {
         return scorePart;
     }
 
-    public static Note createNote(Step step, boolean sharp, int octave, String value) {
+    public static Note createNote(victorzinho.music.pitch.Pitch pitch, NoteValue value) {
         NoteType type = new NoteType();
-        type.setValue(value);
+        type.setValue(getValue(value));
 
-        Pitch pitch = new Pitch();
-        pitch.setOctave(octave);
-        if (sharp) pitch.setAlter(new BigDecimal(1));
-        pitch.setStep(step);
+        Pitch audiverisPitch = new Pitch();
+        audiverisPitch.setOctave(pitch.getOctave());
+        audiverisPitch.setAlter(getAlter(pitch));
+        audiverisPitch.setStep(getStep(pitch));
 
         Note note = new Note();
-        note.setPitch(pitch);
+        note.setPitch(audiverisPitch);
         note.setType(type);
         note.setDuration(new BigDecimal(1));
 
         return note;
     }
 
-    public static Note createRest(String value) {
+    public static Note createRest(NoteValue value) {
         NoteType type = new NoteType();
-        type.setValue(value);
+        type.setValue(getValue(value));
 
         Note note = new Note();
         note.setRest(new Rest());
@@ -55,5 +55,44 @@ public class AudiverisMusicFactory {
         note.setDuration(new BigDecimal(4));
 
         return note;
+    }
+
+    private static Step getStep(victorzinho.music.pitch.Pitch pitch) {
+        return switch (pitch.getPitchClass()) {
+            case C_FLAT, C, C_SHARP -> Step.C;
+            case D_FLAT, D, D_SHARP -> Step.D;
+            case E_FLAT, E, E_SHARP -> Step.E;
+            case F_FLAT, F, F_SHARP -> Step.F;
+            case G_FLAT, G, G_SHARP -> Step.G;
+            case A_FLAT, A, A_SHARP -> Step.A;
+            case B_FLAT, B, B_SHARP -> Step.B;
+        };
+    }
+
+    private static BigDecimal getAlter(victorzinho.music.pitch.Pitch pitch) {
+        return switch (pitch.getPitchClass()) {
+            case C_FLAT, D_FLAT, E_FLAT, F_FLAT, G_FLAT, A_FLAT, B_FLAT -> new BigDecimal(-1);
+            case C, D, E, F, G, A, B -> new BigDecimal(0);
+            case C_SHARP, D_SHARP, E_SHARP, F_SHARP, G_SHARP, A_SHARP, B_SHARP -> new BigDecimal(1);
+        };
+    }
+
+    private static String getValue(NoteValue value) {
+        return switch (value) {
+            case _1024TH -> "1024th";
+            case _512TH -> "512th";
+            case _256TH -> "256th";
+            case _128TH -> "128th";
+            case _64TH -> "64th";
+            case _32ND -> "32nd";
+            case _16TH -> "16th";
+            case EIGHTH -> "eighth";
+            case QUARTER -> "quarter";
+            case HALF -> "half";
+            case WHOLE -> "whole";
+            case BREVE -> "breve";
+            case LONG -> "long";
+            case MAXIMA -> "maxima";
+        };
     }
 }

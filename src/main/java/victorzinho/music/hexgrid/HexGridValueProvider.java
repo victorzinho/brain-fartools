@@ -1,4 +1,4 @@
-package victorzinho.music.hexGrid;
+package victorzinho.music.hexgrid;
 
 /**
  * Provides the rules to produce values on a hexagonal grid by calculating values based on neighbours.

@@ -1,23 +1,18 @@
 package victorzinho.music.score;
 
-import static victorzinho.music.score.AudiverisMusicFactory.createNote;
-import static victorzinho.music.score.AudiverisMusicFactory.createPart;
-import static victorzinho.music.score.AudiverisMusicFactory.createRest;
-import static victorzinho.music.score.AudiverisMusicFactory.createScorePart;
-import static org.audiveris.proxymusic.util.Marshalling.marshal;
+import org.audiveris.proxymusic.*;
+import org.audiveris.proxymusic.ScorePartwise.Part;
+import org.audiveris.proxymusic.ScorePartwise.Part.Measure;
+import org.audiveris.proxymusic.util.Marshalling.MarshallingException;
+import victorzinho.music.pitch.Pitch;
 
 import java.io.OutputStream;
+import java.lang.String;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.audiveris.proxymusic.Note;
-import org.audiveris.proxymusic.PartList;
-import org.audiveris.proxymusic.ScorePart;
-import org.audiveris.proxymusic.ScorePartwise;
-import org.audiveris.proxymusic.ScorePartwise.Part;
-import org.audiveris.proxymusic.ScorePartwise.Part.Measure;
-import org.audiveris.proxymusic.Step;
-import org.audiveris.proxymusic.util.Marshalling.MarshallingException;
+import static org.audiveris.proxymusic.util.Marshalling.marshal;
+import static victorzinho.music.score.AudiverisMusicFactory.*;
 
 public class MusicScore {
     private final Map<String, Measure> partToMeasure;
@@ -49,14 +44,14 @@ public class MusicScore {
         partToMeasure.put(name, measure);
     }
 
-    public void addNote(String partName, Step step, boolean sharp, int octave) {
-        Note note = createNote(step, sharp, octave, "whole");
+    public void addNote(String partName, Pitch pitch, NoteValue value) {
+        Note note = createNote(pitch, value);
         partToMeasure.get(partName).getNoteOrBackupOrForward().add(note);
         updateNotesPerMeasure(partName);
     }
 
-    public void addRest(String partName) {
-        Note rest = createRest("16th");
+    public void addRest(String partName, NoteValue value) {
+        Note rest = createRest(value);
         partToMeasure.get(partName).getNoteOrBackupOrForward().add(rest);
         updateNotesPerMeasure(partName);
     }

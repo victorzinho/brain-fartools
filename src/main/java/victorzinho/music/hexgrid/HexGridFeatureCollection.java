@@ -1,4 +1,4 @@
-package victorzinho.music.hexGrid;
+package victorzinho.music.hexgrid;
 
 import org.geotools.data.DataUtilities;
 import org.geotools.data.simple.SimpleFeatureCollection;

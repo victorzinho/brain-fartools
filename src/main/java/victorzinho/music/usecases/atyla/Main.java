@@ -1,7 +1,7 @@
 package victorzinho.music.usecases.atyla;
 
 import org.locationtech.jts.geom.Envelope;
-import victorzinho.music.hexGrid.HexGridPitchClassProvider;
+import victorzinho.music.hexgrid.HexGridPitchClassProvider;
 import victorzinho.music.usecases.atyla.input.*;
 
 import java.io.*;
@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class Main {
-    private static final File EXPORT_ROOT = new File("C:\\Users\\vicgonco\\Desktop");
+    private static final File EXPORT_DIR = new File(System.getProperty("user.home") + "\\Desktop");
     private static final boolean writeIntermediateFiles = true;
 
     public static void main(String[] args) throws Exception {
@@ -29,10 +29,11 @@ public class Main {
         var descriptors = VesselDataCalculations.getAttributes();
 
         // run!
-        MusicHarmonyGenerator<VesselData> generator = new MusicHarmonyGenerator<>(true, EXPORT_ROOT);
-        generator.generateScore(hexGridProvider, hexGridSize, hexGridEnvelope,
-                pointData, adapter, interpolationStepInSeconds, descriptors);
+        MusicHarmonyGenerator<VesselData> generator = new MusicHarmonyGenerator<>(hexGridProvider,
+                hexGridSize, hexGridEnvelope, EXPORT_DIR, true);
+        generator.generateScore(pointData, adapter, interpolationStepInSeconds, descriptors);
     }
+
 
     private static List<VesselData> getPointData() throws IOException {
         InputStream marineTrafficData = AtylaJsonReader.class.getResourceAsStream("/atyla_marine_traffic.json");
@@ -41,7 +42,7 @@ public class Main {
         AtylaJsonReader atylaJsonReader = new AtylaJsonReader();
         List<VesselData> allData = atylaJsonReader.readFromMarineTraffic(marineTrafficData);
         allData.addAll(atylaJsonReader.readFromYellowBrick(yellowBrickData));
-        writeCsv(allData, new File(EXPORT_ROOT, "atyla_all_points.csv"));
+        writeCsv(allData, new File(EXPORT_DIR, "atyla_all_points.csv"));
         return allData;
 
     }
