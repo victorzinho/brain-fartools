@@ -1,6 +1,6 @@
-package victorzinho.music.hexGrid;
+package victorzinho.music.hexgrid;
 
-import victorzinho.music.PitchClass;
+import victorzinho.music.pitch.PitchClass;
 
 /**
  * {@link HexGridValueProvider} for pitches.

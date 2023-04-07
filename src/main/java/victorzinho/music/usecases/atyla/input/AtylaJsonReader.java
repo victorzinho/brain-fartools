@@ -34,7 +34,7 @@ public class AtylaJsonReader {
                 .setWindTemperature(marineTrafficRecord.getWindTemperature())
                 .setSource(VesselDataSource.MARINE_TRAFFIC)
                 .setSpeed(marineTrafficRecord.getSpeed() / 10f)
-                .setCourse(marineTrafficRecord.getCourse());
+                .setCourse((float) Math.toRadians(marineTrafficRecord.getCourse()));
         return vesselData;
     }
 
