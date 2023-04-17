@@ -2,6 +2,17 @@
 
 Tools for brain farts. With music. And noise fantasy &copy;.
 
+## [Live tools](https://victorzinho.github.io/brain-fartools/)
+
+
+## Java tools
+
+  - [Hex grid harmony](src/main/java/victorzinho/music/usecases/atyla).
+  - [Points in a raster](src/main/java/victorzinho/music/usecases/raster).
+
+
+## Description 
+
 These are tools I've used in the past to create and/or analyze music, from simulating a ball bouncing on the floor to
 generating random notes or automatically produce chord progressions with certain "color" (à la Vivier). 
 
