@@ -13,6 +13,8 @@ some part of the world. Yup, I've done that, don't ask me why.</li>
  target="_blank">Some code</a> to produce music from a shapefile coming from agriculture machinery, mapping values such as 
 yield or speed to music parameters. And yes, I've done that too. My attempts to have code writing music for me are
 endless. So are the failures. (TBD, need to push the code somewhere yet)</li>
+<li><a href="https://sevish.com/scaleworkshop/" target="_blank">Scale Workshop</a>. <i>"Because there are more than 12 notes"</i>.
+ A nice tool for working with different and exporting (potentially) microtonal scales or temperaments.</li>
 <li><a href="https://louisbigo.com/hexachord" target="_blank">HexaChord</a>. According to the creator Louis Bigo: 
 "<i>HexaChord is a computer-aided music analysis/composition software based on spatial representations of musical pitches generalizing the Tonnetz.</i>
 Highly related to my sailboat hex-grid-over-the-north-sea adventure.</li>
